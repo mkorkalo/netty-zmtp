@@ -48,15 +48,17 @@ abstract class CodecBase extends ReplayingDecoder<Void> {
     protected void decode(ChannelHandlerContext ctx, ByteBuf buffer, List<Object> out) throws Exception {
         buffer.markReaderIndex();
         ByteBuf toSend = inputOutput(buffer);
-        while (toSend != null) {
+        if (toSend != null) {
             ctx.channel().writeAndFlush(toSend);
-            toSend = inputOutput(buffer);
+            return;
         }
+
         // This follows the pattern for dynamic pipelines documented in
         // http://netty.io/3.6/api/org/jboss/netty/handler/codec/replay/ReplayingDecoder.html
         if (actualReadableBytes() > 0) {
             out.add(buffer.readBytes(actualReadableBytes()));
         }
+
     }
 
     void setListener(HandshakeListener listener) {
