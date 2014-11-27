@@ -1,6 +1,4 @@
-[![Build Status](https://travis-ci.org/spotify/netty-zmtp.png?branch=master)](https://travis-ci.org/spotify/netty-zmtp)
-
-This is a port of Spotify's [netty-zmtp](https://github.com/spotify/netty-zmtp) library to work with Netty 4+
+This is a port of m0wfo's [netty-zmtp](https://github.com/m0wfo/netty-zmtp) fork, with some backported fixes from original spotify's repository (https://github.com/spotify/netty-zmtp).
 
 
 ## License
